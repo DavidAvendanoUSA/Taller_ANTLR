@@ -30,6 +30,20 @@ public interface ScientificCalcVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitAssign(ScientificCalcParser.AssignContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code clear}
+	 * labeled alternative in {@link ScientificCalcParser#stat}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitClear(ScientificCalcParser.ClearContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code showVars}
+	 * labeled alternative in {@link ScientificCalcParser#stat}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitShowVars(ScientificCalcParser.ShowVarsContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code blank}
 	 * labeled alternative in {@link ScientificCalcParser#stat}.
 	 * @param ctx the parse tree
@@ -92,6 +106,19 @@ public interface ScientificCalcVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitMulDiv(ScientificCalcParser.MulDivContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code constantExpr}
+	 * labeled alternative in {@link ScientificCalcParser#expr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitConstantExpr(ScientificCalcParser.ConstantExprContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link ScientificCalcParser#constant}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitConstant(ScientificCalcParser.ConstantContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link ScientificCalcParser#function}.
 	 * @param ctx the parse tree

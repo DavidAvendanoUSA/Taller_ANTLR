@@ -130,4 +130,40 @@ public class ScientificEvalVisitor
         
             return value;
     }
+    @Override
+    public Double visitConstantExpr(
+        ScientificCalcParser.ConstantExprContext ctx) {
+            String constant = ctx.constant().getText();
+            
+                if (constant.equals("pi")) {
+                    return Math.PI;
+                }
+                
+                if (constant.equals("e")) {
+                    return Math.E;
+                }
+                
+                return 0.0;
+    }
+    @Override
+    public Double visitClear(
+        ScientificCalcParser.ClearContext ctx) {
+            memory.clear();
+            System.out.println("Memoria eliminada.");
+            return 0.0;
+    }
+    @Override
+    public Double visitShowVars(
+        ScientificCalcParser.ShowVarsContext ctx) {
+            if (memory.isEmpty()) {
+                System.out.println("No hay variables definidas.");
+                return 0.0;
+            }
+            
+            for (Map.Entry<String, Double> entry : memory.entrySet()) {
+                System.out.println(entry.getKey() + "=" + entry.getValue());
+            }
+            
+            return 0.0;
+    }
 } 

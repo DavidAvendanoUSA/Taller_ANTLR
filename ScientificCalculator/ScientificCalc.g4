@@ -7,6 +7,8 @@ prog
 stat
     : expr NEWLINE # printExpr
     | ID '=' expr NEWLINE # assign
+    | 'clear' NEWLINE # clear
+    | 'vars' NEWLINE # showVars
     | NEWLINE # blank
     ;
 
@@ -16,9 +18,15 @@ expr
     | expr op=('*'|'/') expr # mulDiv
     | expr op=('+'|'-') expr # addSub
     | function '(' expr ')' # functionCall
+    | constant # constantExpr
     | NUMBER # number
     | ID # id
     | '(' expr ')' # parens
+    ;
+
+constant
+    : 'pi'
+    | 'e'
     ;
 
 function
