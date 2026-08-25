@@ -57,12 +57,11 @@ Permite reconocer:
 
 Por ejemplo, la gramática permite expresiones como:
 
-``text
-2 + 3
-10 * 5
-2^8
-sin(pi/2)
-x = 10
+`2 + 3`
+`10 * 5`
+`2^8`
+`sin(pi/2)`
+`x = 10`
 
 También contiene las etiquetas de las diferentes operaciones, como `#addSub`, `#mulDiv`, `#power` y `#functionCall`. Estas etiquetas ayudan a que ANTLR genere los diferentes métodos que después utiliza el Visitor.
 
