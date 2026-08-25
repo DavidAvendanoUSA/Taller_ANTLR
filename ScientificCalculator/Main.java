@@ -2,10 +2,10 @@ import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.*;
 
 public class Main {
-	public static void main(Strig[] args ) throws Exception {
+	public static void main(String[] args ) throws Exception {
 		
 		CharStream input = 
-			CharSteams.fromStream(System.in);
+			CharStreams.fromStream(System.in);
 
 		ScientificCalcLexer lexer =
 			new ScientificCalcLexer(input);
@@ -16,11 +16,11 @@ public class Main {
 		ScientificCalcParser parser =
 			new ScientificCalcParser(tokens);
 
-		ParserTree tree =
+		ParseTree tree =
 			parser.prog();
 
 		ScientificEvalVisitor visitor =
-			new ScientificCalcEvalVisitor();
+			new ScientificEvalVisitor();
 
 		visitor.visit(tree);
 
