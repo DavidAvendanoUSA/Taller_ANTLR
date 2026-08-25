@@ -38,10 +38,41 @@ public class ScientificEvalVisitor
 				return left / right;
 			}
 	}
+
 	@Override
 	public Double visitParens(
 	ScientificCalcParser.ParensContext ctx) {
 		return visit (ctx.expr());
+	}
+
+	@Override
+	public Double visitPrintExpr(
+		ScientificCalcParser.PrintExprContext ctx) {
+			double value = visit(ctx.expr());
+			System.out.println(value);
+			return value;
+	}
+
+	@Override
+	public Double visitAssign(
+		ScientificCalcParser.AssignContext ctx) {
+			String id = ctx.ID().getText();
+			double value = visit(ctx.expr());
+			memory.put(id, value);
+		return value;
+	}
+
+	@Override
+	public Double visitId(
+		ScientificCalcParser.IdContext ctx) {
+			String id = ctx.ID().getText();
+			if (memory.containKey(id)){
+				return memory.get(id);
+			}
+			System.err.println(
+				"Variable no definida: " + id
+			);
+	return 0.0;
 	}
 
 
