@@ -12,11 +12,24 @@ stat
 
 expr
     : <assoc=right> expr '^' expr # power
+    | op=('+'|'-') expr # unary
     | expr op=('*'|'/') expr # mulDiv
     | expr op=('+'|'-') expr # addSub
+    | function '(' expr ')' # functionCall
     | NUMBER # number
     | ID # id
     | '(' expr ')' # parens
+    ;
+
+function
+    : 'sin'
+    | 'cos'
+    | 'tan'
+    | 'sqrt'
+    | 'log'
+    | 'ln'
+    | 'abs'
+    | 'exp'
     ;
 
 MUL : '*' ;

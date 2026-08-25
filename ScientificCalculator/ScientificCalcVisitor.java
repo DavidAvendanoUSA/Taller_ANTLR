@@ -51,12 +51,26 @@ public interface ScientificCalcVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitParens(ScientificCalcParser.ParensContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code functionCall}
+	 * labeled alternative in {@link ScientificCalcParser#expr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFunctionCall(ScientificCalcParser.FunctionCallContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code addSub}
 	 * labeled alternative in {@link ScientificCalcParser#expr}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitAddSub(ScientificCalcParser.AddSubContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code unary}
+	 * labeled alternative in {@link ScientificCalcParser#expr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitUnary(ScientificCalcParser.UnaryContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code id}
 	 * labeled alternative in {@link ScientificCalcParser#expr}.
@@ -78,4 +92,10 @@ public interface ScientificCalcVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitMulDiv(ScientificCalcParser.MulDivContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link ScientificCalcParser#function}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFunction(ScientificCalcParser.FunctionContext ctx);
 }
