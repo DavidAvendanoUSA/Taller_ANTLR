@@ -38,5 +38,11 @@ public class ScientificEvalVisitor
 				return left / right;
 			}
 	}
+	@Override
+	public Double visitParens(
+	ScientificClacParser.ParensContexy ctx) {
+		return visit (ctx.expr());
+	}
+
 
 }
