@@ -9,6 +9,10 @@ stat
     | ID '=' expr NEWLINE # assign
     | 'clear' NEWLINE # clear
     | 'vars' NEWLINE # showVars
+    | 'plot' 
+       '(' expr ',' expr ',' expr ')' 
+       NEWLINE 
+       # plotExpr
     | NEWLINE # blank
     ;
 

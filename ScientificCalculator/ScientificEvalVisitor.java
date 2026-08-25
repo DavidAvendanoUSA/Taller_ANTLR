@@ -1,5 +1,7 @@
 import java.util.HashMap;
 import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ScientificEvalVisitor
     extends ScientificCalcBaseVisitor<Double> {
@@ -79,7 +81,7 @@ public class ScientificEvalVisitor
             double exponent = visit(ctx.expr(1));
             return Math.pow(base,exponent);
     }
-    
+
     @Override
     public Double visitFunctionCall(
         ScientificCalcParser.FunctionCallContext ctx) {
@@ -118,31 +120,31 @@ public class ScientificEvalVisitor
                 );
     }
     }
-    
+
     @Override
     public Double visitUnary(
         ScientificCalcParser.UnaryContext ctx) {
             double value = visit(ctx.expr());
-        
+
             if (ctx.op.getText().equals("-")) {
                 return -value;
             }
-        
+
             return value;
     }
     @Override
     public Double visitConstantExpr(
         ScientificCalcParser.ConstantExprContext ctx) {
             String constant = ctx.constant().getText();
-            
+
                 if (constant.equals("pi")) {
                     return Math.PI;
                 }
-                
+
                 if (constant.equals("e")) {
                     return Math.E;
                 }
-                
+
                 return 0.0;
     }
     @Override
@@ -159,11 +161,35 @@ public class ScientificEvalVisitor
                 System.out.println("No hay variables definidas.");
                 return 0.0;
             }
-            
+
             for (Map.Entry<String, Double> entry : memory.entrySet()) {
                 System.out.println(entry.getKey() + "=" + entry.getValue());
             }
-            
             return 0.0;
     }
-} 
+    @Override
+    public Double visitPlotExpr(
+        ScientificCalcParser.PlotExprContext ctx) {
+            double xmin = visit(ctx.expr(1));
+            double xmax = visit(ctx.expr(2));
+
+            int samples = 800;
+            List<Double> xs = new ArrayList<>();
+            List<Double> ys = new ArrayList<>();
+
+            for (int i = 0; i < samples; i++) {
+                double x = xmin + i * (xmax - xmin) / (samples - 1);
+                memory.put("x", x);
+
+                double y = visit(ctx.expr(0));
+
+                if (Double.isFinite(y)) {
+                    xs.add(x);
+                    ys.add(y);
+                }
+            }
+
+            new PlotWindow(xs, ys);
+            return 0.0;
+    }
+}

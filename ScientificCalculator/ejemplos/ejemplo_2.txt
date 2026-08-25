@@ -1,0 +1,14 @@
+radio = 10
+area = pi * radio ^ 2
+perimetro = 2 * pi * radio
+a = 5
+b = 3
+resultado = a ^ 2 + b ^ 2
+sqrt(144)
+sin(pi / 2)
+cos(0)
+vars
+plot(x ^ 2, -10, 10)
+plot(sin(x), -6.28, 6.28)
+clear
+vars
