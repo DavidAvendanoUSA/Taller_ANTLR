@@ -108,19 +108,30 @@ Se encarga de recibir lo que escribe el usuario y conectar las diferentes partes
 
 El proceso que realiza es:
 
+
 Entrada del usuario
+
         `↓`
 Lexer
+
         `↓`
+        
 Tokens
         `↓`
+        
 Parser
         `↓`
+        
 Árbol sintáctico
+
         `↓`
+        
 Visitor
+
         `↓`
+        
 Resultado
+
 
 Primero el Lexer convierte el texto en tokens.
 
