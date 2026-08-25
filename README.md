@@ -110,25 +110,21 @@ El proceso que realiza es:
 
 
 Entrada del usuario
-
-        `↓`
+        ↓
 Lexer
-
-        `↓`
+        ↓
         
 Tokens
-        `↓`
+        ↓
         
 Parser
-        `↓`
+        ↓
         
 Árbol sintáctico
-
-        `↓`
+        ↓
         
 Visitor
-
-        `↓`
+        ↓
         
 Resultado
 
