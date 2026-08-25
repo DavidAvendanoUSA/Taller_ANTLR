@@ -57,11 +57,11 @@ Permite reconocer:
 
 Por ejemplo, la gramática permite expresiones como:
 
-`2 + 3`
-`10 * 5`
-`2^8`
-`sin(pi/2)`
-`x = 10`
+- `2 + 3`
+- `10 * 5`
+- `2^8`
+- `sin(pi/2)`
+- `x = 10`
 
 También contiene las etiquetas de las diferentes operaciones, como `#addSub`, `#mulDiv`, `#power` y `#functionCall`. Estas etiquetas ayudan a que ANTLR genere los diferentes métodos que después utiliza el Visitor.
 
@@ -136,7 +136,7 @@ Utiliza Java Swing para crear una ventana donde se pueden dibujar las funciones.
 
 Cuando se utiliza el comando:
 
-plot(x^2,-10,10)
+- `plot(x^2,-10,10)`
 
 el programa calcula diferentes valores de x dentro del rango indicado y obtiene los valores correspondientes de y.
 
@@ -160,7 +160,7 @@ Primero, el usuario escribe una expresión.
 
 Por ejemplo:
 
-2 + 3 * 4
+- `2 + 3 * 4`
 
 El Lexer identifica los diferentes elementos de la expresión.
 
@@ -180,43 +180,43 @@ Esto sucede porque la multiplicación tiene prioridad sobre la suma.
 
 La calculadora permite realizar operaciones básicas como:
 
-`2 + 3`
-`10 - 5`
-`4 * 5`
-`20 / 4`
+- `2 + 3`
+- `10 - 5`
+- `4 * 5`
+- `20 / 4`
 
 También permite utilizar potencias:
 
-`2^8`
+- `2^8`
 
 Variables:
 
-`a = 10`
-`b = 20`
-`a + b`
+- `a = 10`
+- `b = 20`
+- `a + b`
 
 Constantes:
 
-`pi`
-`e`
+- `pi`
+- `e`
 
 Funciones matemáticas:
 
-`sin(pi/2)`
-`sqrt(25)`
-`log(100)`
-`ln(e)`
-`abs(-10)`
-`exp(1)`
+- `sin(pi/2)`
+- `sqrt(25)`
+- `log(100)`
+- `ln(e)`
+- `abs(-10)`
+- `exp(1)`
 
 Y comandos:
 
-`vars`
-`clear`
+- `vars`
+- `clear`
 
 También se pueden realizar gráficas mediante:
 
-`plot(x^2,-10,10)`
+- `plot(x^2,-10,10)`
 
 ---
 
@@ -228,7 +228,7 @@ El Lexer se encarga de leer el texto que escribe el usuario y convertirlo en tok
 
 Por ejemplo, en:
 
-`10 + 20`
+- `10 + 20`
 
 reconoce el número 10, el operador + y el número 20.
 
@@ -242,7 +242,7 @@ También se encarga de construir el árbol sintáctico que representa la expresi
 
 Por ejemplo:
 
-`2 + 3 * 4`
+- `2 + 3 * 4`
 
 se interpreta teniendo en cuenta que la multiplicación debe realizarse antes que la suma.
 
@@ -280,13 +280,13 @@ Su función es guardar las variables y sus valores.
 
 Por ejemplo:
 
-`a = 10`
+- `a = 10`
 
 hace que el programa guarde que la variable a tiene el valor 10.
 
 Después podemos utilizar:
 
-`a + 5`
+- `a + 5`
 
 y el programa sabe cuál es el valor de a.
 
@@ -296,7 +296,7 @@ Cuando se realiza una gráfica se necesitan muchos puntos.
 
 Por ejemplo, si queremos graficar:
 
-`sin(x)`
+- `sin(x)`
 
 el programa necesita probar diferentes valores de x.
 
@@ -310,7 +310,7 @@ Porque el árbol representa la estructura de la expresión y no un único result
 
 Por ejemplo, en:
 
-`sin(x)`
+- `sin(x)`
 
 la estructura de la expresión siempre es la misma.
 
@@ -324,7 +324,7 @@ Una función puede tener puntos donde no existe un valor válido.
 
 Un ejemplo sería:
 
-plot(1/x,-5,5)
+- `plot(1/x,-5,5)`
 
 porque cuando x vale 0 se estaría intentando dividir entre cero.
 
@@ -336,11 +336,11 @@ Por eso sería necesario controlar estos valores para evitar dibujar puntos que 
 
 Actualmente las funciones utilizan un solo argumento, por ejemplo:
 
-`sqrt(25)`
+- `sqrt(25)`
 
 Para implementar funciones con dos argumentos, como:
 
-`pow(2,8)`
+- `pow(2,8)`
 
 sería necesario modificar la gramática para permitir dos expresiones separadas por una coma.
 
@@ -356,9 +356,9 @@ Su propósito específico es permitir escribir operaciones matemáticas, utiliza
 
 Por ejemplo:
 
-`radio = 10`
-`area = pi * radio^2`
-`plot(x^2,-10,10)`
+- `radio = 10`
+- `area = pi * radio^2`
+- `plot(x^2,-10,10)`
 
 son expresiones que pertenecen al dominio de las matemáticas.
 
