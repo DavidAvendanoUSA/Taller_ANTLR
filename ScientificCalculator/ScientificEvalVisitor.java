@@ -13,4 +13,15 @@ public class ScientificEvalVisitor
 		cxt.NUMBER().getText()
 	);
 	}
+	@override
+	public Double visitAddSub(
+		ScientificCalcParser.AddSubContext ctx) {
+			double left = visit(ctx.expr(0));
+			double right = visit(ctx.expr(1));
+			if (ctx.op.getType() == ScientificCalcParser.ADD) {
+				return left + right;
+			}
+		return left - rigth;
+	}
+
 }
