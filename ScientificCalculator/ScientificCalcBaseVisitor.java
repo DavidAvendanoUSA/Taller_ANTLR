@@ -1,4 +1,4 @@
-// Generated from ScientificCalc.g4 by ANTLR 4.13.1
+// Generated from ScientificCalc.g4 by ANTLR 4.13.2
 import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
 
 /**
@@ -67,6 +67,13 @@ public class ScientificCalcBaseVisitor<T> extends AbstractParseTreeVisitor<T> im
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
 	@Override public T visitId(ScientificCalcParser.IdContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitPower(ScientificCalcParser.PowerContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *

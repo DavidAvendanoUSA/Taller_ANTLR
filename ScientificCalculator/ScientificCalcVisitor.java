@@ -1,4 +1,4 @@
-// Generated from ScientificCalc.g4 by ANTLR 4.13.1
+// Generated from ScientificCalc.g4 by ANTLR 4.13.2
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
 /**
@@ -64,6 +64,13 @@ public interface ScientificCalcVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitId(ScientificCalcParser.IdContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code power}
+	 * labeled alternative in {@link ScientificCalcParser#expr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitPower(ScientificCalcParser.PowerContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code mulDiv}
 	 * labeled alternative in {@link ScientificCalcParser#expr}.

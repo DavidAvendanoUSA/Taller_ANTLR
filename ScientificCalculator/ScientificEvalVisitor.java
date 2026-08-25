@@ -69,11 +69,16 @@ public class ScientificEvalVisitor
 			if (memory.containsKey(id)){
 				return memory.get(id);
 			}
-			System.err.println(
-				"Variable no definida: " + id
-			);
-			return 0.0;
+			throw new RuntimeException("Variable no definida: " + id);
 	}
+	@Override
+	public Double visitPower(
+		ScientificCalcParser.PowerContext ctx) {
+			double base = visit(ctx.expr(0));
+			double exponent = visit(ctx.expr(1));
+			return Math.pow(base,exponent);
+	}
+
 
 
 }

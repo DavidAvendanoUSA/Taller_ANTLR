@@ -11,7 +11,8 @@ stat
     ;
 
 expr
-    : expr op=('*'|'/') expr # mulDiv
+    : <assoc=right> expr '^' expr # power
+    | expr op=('*'|'/') expr # mulDiv
     | expr op=('+'|'-') expr # addSub
     | NUMBER # number
     | ID # id
@@ -22,6 +23,7 @@ MUL : '*' ;
 DIV : '/' ;
 ADD : '+' ;
 SUB : '-' ;
+POW : '^';
 
 NUMBER
     : [0-9]+ ('.' [0-9]+)?
