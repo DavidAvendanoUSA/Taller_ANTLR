@@ -32,7 +32,8 @@ public class ScientificEvalVisitor
 				return left * right;
 			}
 			if (right == 0) {
-				return System.out.println("Error: No se puede dividir entre cero.");
+				System.out.println("Error: No se puede dividir entre cero.")
+				return 0.0;
 			} else {
 				return left / right;
 			}
