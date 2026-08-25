@@ -66,7 +66,7 @@ public class ScientificEvalVisitor
 	public Double visitId(
 		ScientificCalcParser.IdContext ctx) {
 			String id = ctx.ID().getText();
-			if (memory.containKey(id)){
+			if (memory.containsKey(id)){
 				return memory.get(id);
 			}
 			System.err.println(
