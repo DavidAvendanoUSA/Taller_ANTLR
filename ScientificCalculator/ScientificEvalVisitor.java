@@ -13,7 +13,7 @@ public class ScientificEvalVisitor
 		cxt.NUMBER().getText()
 	);
 	}
-	@override
+	@Override
 	public Double visitAddSub(
 		ScientificCalcParser.AddSubContext ctx) {
 			double left = visit(ctx.expr(0));
@@ -21,7 +21,21 @@ public class ScientificEvalVisitor
 			if (ctx.op.getType() == ScientificCalcParser.ADD) {
 				return left + right;
 			}
-		return left - rigth;
+		return left - right;
+	}
+	@Override
+	public Double visitMulDiv(
+		ScientificCalcParser.MulDivContext ctx) {
+			double left = visit(ctx.expr(0));
+			double right = visit(ctx.expr(1));
+			if (ctx.op.getType() == ScientificCalcParser.MUL) {
+				return left * right;
+			}
+			if (right == 0) {
+				return System.out.println("Error: No se puede dividir entre cero.");
+			} else {
+				return left / right;
+			}
 	}
 
 }
