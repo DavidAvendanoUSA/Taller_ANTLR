@@ -108,36 +108,25 @@ Se encarga de recibir lo que escribe el usuario y conectar las diferentes partes
 
 El proceso que realiza es:
 
-
+```
 Entrada del usuario
-       
         ↓
-Lexer
-       
+Lexer       
+        ↓   
+Tokens       
         ↓
-        
-Tokens
-       
-        ↓
-        
 Parser
-      
+        ↓  
+Árbol sintáctico      
         ↓
-        
-Árbol sintáctico
-      
-        ↓
-        
 Visitor
-      
-        ↓
-        
+        ↓ 
 Resultado
-
+```
 
 Primero el Lexer convierte el texto en tokens.
 
-Después el Parser utiliza esos tokens y las reglas de ScientificCalc.g4 para construir el árbol sintáctico.
+Después el Parser utiliza esos tokens y las reglas de *ScientificCalc.g4* para construir el árbol sintáctico.
 
 Finalmente el Visitor recorre ese árbol y realiza la operación correspondiente.
 
@@ -149,9 +138,9 @@ Utiliza Java Swing para crear una ventana donde se pueden dibujar las funciones.
 
 Cuando se utiliza el comando:
 
-- `plot(x^2,-10,10)`
+`plot(x^2,-10,10)`
 
-el programa calcula diferentes valores de x dentro del rango indicado y obtiene los valores correspondientes de y.
+El programa calcula diferentes valores de x dentro del rango indicado y obtiene los valores correspondientes de y.
 
 Después esos puntos son enviados a PlotWindow.java, donde se convierten a coordenadas de la ventana y se dibuja la función.
 
@@ -160,8 +149,25 @@ La ventana utilizada para la gráfica tiene un tamaño de 800 x 600.
 ### ejemplos
 
 La carpeta ejemplos contiene ejemplos utilizados para probar las diferentes funcionalidades de la calculadora.
-
 Sirve para comprobar que las operaciones, variables, funciones y demás elementos de la gramática funcionan correctamente.
+
+#### ejemplo_1.txt
+
+<img width="867" height="423" alt="image" src="https://github.com/user-attachments/assets/f765da11-f648-47d4-a755-890b734c3ecb" />
+
+<img width="862" height="629" alt="Screenshot 2026-08-25 191014" src="https://github.com/user-attachments/assets/f7bbeadb-8cca-4b84-8c40-061ea6280681" />
+
+<img width="867" height="626" alt="Screenshot 2026-08-25 190957" src="https://github.com/user-attachments/assets/fb5840a7-6954-4095-a5f1-92ee60952cd3" />
+
+
+#### ejemplo_2.txt
+
+<img width="863" height="439" alt="image" src="https://github.com/user-attachments/assets/a0b9b632-a1c5-4e6e-942a-57ad926a4524" />
+
+<img width="896" height="624" alt="image" src="https://github.com/user-attachments/assets/71ad8597-d235-4be1-82f2-86f89c01c8a3" />
+
+<img width="924" height="610" alt="image" src="https://github.com/user-attachments/assets/01cd3e5a-c16b-4c30-91af-a4cf7e0adc2d" />
+
 
 ---
 
@@ -181,9 +187,8 @@ Después el Parser revisa si la expresión cumple con las reglas de la gramátic
 
 Finalmente, el Visitor recorre el árbol y realiza las operaciones necesarias para obtener el resultado.
 
-En este caso el resultado sería:
-
-14.0
+En este caso el resultado sería: 
+*14.0*
 
 Esto sucede porque la multiplicación tiene prioridad sobre la suma.
 
@@ -271,7 +276,7 @@ se utiliza para las operaciones de suma y resta.
 
 Mientras que:
 
-#functionCall
+*#functionCall*
 
 se utiliza cuando se llama una función matemática.
 
@@ -386,3 +391,96 @@ La gramática define las expresiones que puede reconocer el programa, el Parser 
 También se logró implementar una calculadora con variables, funciones matemáticas, constantes, comandos y gráficas.
 
 En general, el proyecto permitió aplicar los conceptos vistos en clase de una manera práctica y entender mejor cómo se puede construir un lenguaje sencillo utilizando ANTLR.
+
+---
+
+## Preguntas por capítulos
+
+**Capítulo III**
+       
+-Detente y analiza: 
+
+       ¿Por qué cree que resulta conveniente tener un método diferente para una suma, una multiplicación y un número? Escriba una explicación de aproximadamente tres líneas antes de continuar. 
+              
+       R// Porque permite que cada operación maneje una lógica independiente y además evita procesar un nodo genérico con bloques de if o switch para adivinar el tipo de operación. 
+
+**Capítulo VI**
+
+- Ahora hazlo tú 
+
+Determine si los siguientes textos pueden ser reconocidos por la regla ID: 
+
+       variable: Sí 
+       
+       x2: Sí 
+       
+       2x: No, porque la regla determina que la letra debe ir antes que un número. 
+       
+       _resultado: No, porque la regla determina que el ‘_’ debe ir después del carácter. 
+       
+       variable-final: No, porque no se reconoce el símbolo ‘-’ 
+
+<img width="835" height="560" alt="image" src="https://github.com/user-attachments/assets/b80e619e-9c99-42b9-b7ef-20b0214dca86" />
+
+**Capítulo VII**
+
+- Detente y analiza
+
+       Compare esos métodos con las etiquetas utilizadas en la gramática. ¿Qué relación encuentra? 
+       
+       R// Etiquetas como #mulDiv, #addSub, #number y #id indican diferentes tipos dentro de las reglas de la gramática. ANTLR utiliza esas etiquetas para generar automáticamente métodos específicos en el Visitor, como visitMulDiv(), visitAddSub() y visitNumber(). Así, cada método permite implementar por separado el comportamiento correspondiente a cada tipo de nodo.
+
+**Capítulo XVI**
+
+-Detente y analiza
+
+       ¿Qué sucedería si escribiera:
+       resultado + 10
+       sin haber asignado previamente un valor a resultado? ¿Considera adecuado devolver cero o sería mejor producir un error?
+
+       R// Podría ser mejor devolver un error, pues si se asume que es 0, podría ocultar algún posible error.
+
+**Capítulo XVIII**
+
+- Ahora hazlo tú
+
+         Determine manualmente el resultado esperado para cada expresión antes de ejecutarla. Compare posteriormente su respuesta con la calculadora.
+
+         - 2^8 = 256
+         - 10^2 = 100
+         - 2^3+4 = 12
+         - 2*3^2 = 18
+  
+<img width="814" height="182" alt="image" src="https://github.com/user-attachments/assets/3ba60ba9-1fa6-4168-8ecd-7361cc370d5f" />
+
+**Capítulo XXI**
+
+- Comprueba tu implementación
+
+         Determine manualmente el resultado esperado para cada expresión antes de ejecutarla. Compare posteriormente su respuesta con la calculadora.
+
+         - sqrt(25)
+         - cos(0)
+         - log(100)
+         - abs(-10)
+
+<img width="802" height="153" alt="image" src="https://github.com/user-attachments/assets/ec6934ef-68b9-46fd-965c-782d6bbfa3d9" />
+
+**Capítulo XXXIX**
+
+- Detente y analiza
+  
+       Cuando se ejecuta el Visitor:
+       visit(ctx.expr())
+       ¿se evalúa una cadena de texto o se visita una estructura de árbol?
+       Explique su respuesta.
+
+       R// No. visit(ctx.expr()) no evalúa directamente una cadena de texto. ctx.expr() obtiene el nodo expr del árbol correspondiente a esa expresión. Luego, visit(...) recorre ese nodo y sus hijos para evaluarlos según el método visit que corresponda.
+
+---
+
+## Integrantes
+
+- David Avendaño
+- Laura Niño
+- Brayan Paredes
